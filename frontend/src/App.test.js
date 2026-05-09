@@ -1,8 +1,25 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen, fireEvent } from '@testing-library/react';
+import SearchBar from './components/SearchBar';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('SearchBar Component', () => {
+  test('calls onSearchChange when user types', () => {
+    const mockOnSearchChange = jest.fn();
+
+    render(
+      <SearchBar
+        searchTerm=""
+        onSearchChange={mockOnSearchChange}
+      />
+    );
+
+    const input = screen.getByPlaceholderText('Search books...');
+
+    fireEvent.change(input, {
+      target: { value: 'Clean Code' }
+    });
+
+    expect(mockOnSearchChange).toHaveBeenCalledWith(
+      'Clean Code'
+    );
+  });
 });
