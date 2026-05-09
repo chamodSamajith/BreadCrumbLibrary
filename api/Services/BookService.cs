@@ -24,6 +24,15 @@ public class BookService
             PublishedDate = new DateOnly(1999, 10, 30),
             Owner = "Ben",
             IsAvailable = false
+        },
+        new Book
+        {
+            Title = "Chamod The Programmer",
+            Author = "Chamod Rathnayake",
+            Isbn = "0466525361",
+            PublishedDate = new DateOnly(1996, 06, 06),
+            Owner = "CR",
+            IsAvailable = false
         }
     ];
 
